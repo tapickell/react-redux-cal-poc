@@ -10,7 +10,7 @@ var duration = require('gulp-duration') // Time aspects of your gulp process
 var gutil = require('gulp-util') // Provides gulp utilities, including logging and beep
 var livereload = require('gulp-livereload') // Livereload support for the browser
 var merge = require('utils-merge') // Object merge tool
-//var notify = require('gulp-notify') // Provides notification to both the console and Growel
+var notify = require('gulp-notify') // Provides notification to both the console and Growel
 var rename = require('gulp-rename') // Rename sources
 var sourcemaps = require('gulp-sourcemaps') // Provide external sourcemap files
 var source = require('vinyl-source-stream') // Vinyl stream support
@@ -56,9 +56,9 @@ function bundle(bundler) {
     .pipe(sourcemaps.init({loadMaps: true})) // Extract the inline sourcemaps
     .pipe(sourcemaps.write('./map')) // Set folder for sourcemaps to output to
     .pipe(gulp.dest(config.js.outputDir)) // Set the output folder
-    //.pipe(notify({
-    //  message: 'Generated file: <%= file.relative %>',
-    //})) // Output the file being created
+    .pipe(notify({
+      message: 'Generated file: <%= file.relative %>',
+    })) // Output the file being created
     .pipe(bundleTimer) // Output time timing of the file creation
  //   .pipe(livereload()) // Reload the view in the browser
 }
@@ -72,7 +72,7 @@ gulp.task('default', function() {
   var bundler = browserify(config.js.src, args) // Browserify
     .plugin(watchify, {ignoreWatch: ['**/node_modules/**', './app/client/test'], poll: true}) // Watchify to watch source file changes
     .transform(
-      babelify, 
+      babelify,
       {
         presets: ['es2015', 'react']
       , plugins: ['transform-object-rest-spread']
