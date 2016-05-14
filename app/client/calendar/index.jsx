@@ -12,14 +12,16 @@ let myEventsList = [
 
 let MyCalendar = React.createClass({
   render() {
-    return <div>
-      <BigCalendar
-        events={myEventsList}
-        startAccessor='startDate'
-        endAccessor='endDate'
-      />
-    </div>
-  }
+    return <div className='app'>
+        <div className='contain'>
+          <BigCalendar
+            events={myEventsList}
+            startAccessor='startDate'
+            endAccessor='endDate'
+          />
+        </div>
+      </div>
+}
 })
 
 

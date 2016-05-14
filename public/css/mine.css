@@ -1,0 +1,9 @@
+.contain {
+    background-color: white;
+    border-radius: 3px;
+    padding: 20px;
+    max-width: 900px;
+    height: 700px;
+    margin: auto;
+    position: relative;
+}

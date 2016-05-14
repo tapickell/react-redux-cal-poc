@@ -30,12 +30,16 @@ var MyCalendar = _react2.default.createClass({
   render: function render() {
     return _react2.default.createElement(
       'div',
-      null,
-      _react2.default.createElement(_reactBigCalendar2.default, {
-        events: myEventsList,
-        startAccessor: 'startDate',
-        endAccessor: 'endDate'
-      })
+      { className: 'app' },
+      _react2.default.createElement(
+        'div',
+        { className: 'contain' },
+        _react2.default.createElement(_reactBigCalendar2.default, {
+          events: myEventsList,
+          startAccessor: 'startDate',
+          endAccessor: 'endDate'
+        })
+      )
     );
   }
 });
