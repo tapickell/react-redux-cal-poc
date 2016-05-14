@@ -7,7 +7,9 @@ import BigCalendar  from 'react-big-calendar'
 BigCalendar.momentLocalizer(moment) // or globalizeLocalizer
 
 let myEventsList = [
-  { startDate: Date.now(), endDate: Date.now() + 500000000 }
+  { title: 'Long Event', startDate: Date.now(), endDate: Date.now() + 500000000 },
+  { title: 'Short Event', startDate: Date.now()-50000000, endDate: Date.now()-50000000 },
+  { title: 'All Day Event', startDate: Date.now(), endDate: Date.now(), allDay: true }
 ]
 
 let MyCalendar = React.createClass({
@@ -15,13 +17,21 @@ let MyCalendar = React.createClass({
     return <div className='app'>
         <div className='contain'>
           <BigCalendar
+            popup={true}
+            selectable={true}
             events={myEventsList}
             startAccessor='startDate'
             endAccessor='endDate'
+            onSelectEvent={event => alert(event.title)}
+            onSelectSlot={(slotInfo) => alert(
+              `selected slot: \n\nstart ${slotInfo.start.toLocaleString()} ` +
+              `\nend: ${slotInfo.end.toLocaleString()}`
+            )}
           />
         </div>
       </div>
-}
+  }
+
 })
 
 

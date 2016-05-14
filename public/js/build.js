@@ -23,7 +23,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // to the correct localizer.
 _reactBigCalendar2.default.momentLocalizer(_moment2.default); // or globalizeLocalizer
 
-var myEventsList = [{ startDate: Date.now(), endDate: Date.now() + 500000000 }];
+var myEventsList = [{ title: 'Long Event', startDate: Date.now(), endDate: Date.now() + 500000000 }, { title: 'Short Event', startDate: Date.now() - 50000000, endDate: Date.now() - 50000000 }, { title: 'All Day Event', startDate: Date.now(), endDate: Date.now(), allDay: true }];
 
 var MyCalendar = _react2.default.createClass({
   displayName: 'MyCalendar',
@@ -35,9 +35,17 @@ var MyCalendar = _react2.default.createClass({
         'div',
         { className: 'contain' },
         _react2.default.createElement(_reactBigCalendar2.default, {
+          popup: true,
+          selectable: true,
           events: myEventsList,
           startAccessor: 'startDate',
-          endAccessor: 'endDate'
+          endAccessor: 'endDate',
+          onSelectEvent: function onSelectEvent(event) {
+            return alert(event.title);
+          },
+          onSelectSlot: function onSelectSlot(slotInfo) {
+            return alert('selected slot: \n\nstart ' + slotInfo.start.toLocaleString() + ' ' + ('\nend: ' + slotInfo.end.toLocaleString()));
+          }
         })
       )
     );
