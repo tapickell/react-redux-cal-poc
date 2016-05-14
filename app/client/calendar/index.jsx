@@ -12,7 +12,7 @@ let myEventsList = [
 
 let MyCalendar = React.createClass({
   render() {
-    <div>
+    return <div>
       <BigCalendar
         events={myEventsList}
         startAccessor='startDate'

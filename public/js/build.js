@@ -28,7 +28,7 @@ var myEventsList = [{ startDate: Date.now(), endDate: Date.now() + 500000000 }];
 var MyCalendar = _react2.default.createClass({
   displayName: 'MyCalendar',
   render: function render() {
-    _react2.default.createElement(
+    return _react2.default.createElement(
       'div',
       null,
       _react2.default.createElement(_reactBigCalendar2.default, {
